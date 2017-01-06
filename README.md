@@ -31,13 +31,13 @@ should do the trick on Unix-like operating systems, or cygwin.
 Scroll for 8 seconds and save the GPU profiling information for the current screen into a file.
 
 ```bash
-$ ./slickr.sh > profile.txt
+$ ./slickr.sh -s ecxs3342d -p com.android.settings > profile.txt
 ```
 
 Scroll for 8 seconds and display the average frame delay (in milliseconds).
 
 ```bash
-$ ./slickr.sh | ./avg.py
+$ ./slickr.sh -p com.android.launcher -H | ./avg.py
 ```
 
 Scroll for 8 seconds and plot the recorded data and other metrics.
@@ -55,7 +55,11 @@ $ ./compare.py profile1.txt profile2.txt
 ## api
 
 ```bash
-$ slickr.sh <package> <iterations> <distance>
+$ slickr.sh -p <package> -c <iterations> -s <serial> -H
+-p       package  Package to get
+-s       serial to test, if one device connected, please skip
+-c       interaction to handle
+-H       horizontal scrolling enabled
 ```
 
 * `package` is the Java package name for the Android application. For example, for the [Tumblr app](https://play.google.com/store/apps/details?id=com.tumblr), it is `com.tumblr`. It can be gleaned from the play store url for an application.
